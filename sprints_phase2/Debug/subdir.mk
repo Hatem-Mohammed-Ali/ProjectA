@@ -6,18 +6,21 @@
 C_SRCS += \
 ../motor.c \
 ../phase2.c \
+../pwm.c \
 ../timer.c \
 ../ultrasonic.c 
 
 OBJS += \
 ./motor.o \
 ./phase2.o \
+./pwm.o \
 ./timer.o \
 ./ultrasonic.o 
 
 C_DEPS += \
 ./motor.d \
 ./phase2.d \
+./pwm.d \
 ./timer.d \
 ./ultrasonic.d 
 

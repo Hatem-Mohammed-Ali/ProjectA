@@ -8,10 +8,10 @@
 
 #ifndef TIMER_H_
 #define TIMER_H_
-#include "std_types.h"
 #include "bit_math.h"
 #include "reg.h"
 #include "interrupt.h"
+#include "std_types.h"
 
 void timer0_init(void);
 

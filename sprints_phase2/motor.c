@@ -34,16 +34,16 @@ void Motor_move_backward(void)
 
 void Motor_turn_right(void)
 {
-	CLEAR_BIT(PORTD, Motor1_dir1);
-	SET_BIT(PORTD, Motor1_dir2);
-	CLEAR_BIT(PORTD, Motor2_dir1);
-	SET_BIT(PORTD, Motor2_dir2);
+	SET_BIT(PORTD, Motor1_dir1);
+	CLEAR_BIT(PORTD, Motor1_dir2);
+	SET_BIT(PORTD, Motor2_dir1);
+	CLEAR_BIT(PORTD, Motor2_dir2);
 }
 
 void Motor_turn_left(void)
 {
-	SET_BIT(PORTD, Motor1_dir1);
-	CLEAR_BIT(PORTD, Motor1_dir2);
+	CLEAR_BIT(PORTD, Motor1_dir1);
+	SET_BIT(PORTD, Motor1_dir2);
 	CLEAR_BIT(PORTD, Motor2_dir1);
 	SET_BIT(PORTD, Motor2_dir2);
 }
@@ -51,17 +51,18 @@ void Motor_turn_left(void)
 void Motor_slide_right(void)
 {
 	CLEAR_BIT(PORTD, Motor1_dir1);
-	SET_BIT(PORTD, Motor1_dir2);
+	CLEAR_BIT(PORTD, Motor1_dir2);
 	CLEAR_BIT(PORTD, Motor2_dir1);
-	CLEAR_BIT(PORTD, Motor2_dir2);
+	SET_BIT(PORTD, Motor2_dir2);
 }
 
 void Motor_slide_left(void)
 {
+
 	CLEAR_BIT(PORTD, Motor1_dir1);
-	CLEAR_BIT(PORTD, Motor1_dir2);
+	SET_BIT(PORTD, Motor1_dir2);
 	CLEAR_BIT(PORTD, Motor2_dir1);
-	SET_BIT(PORTD, Motor2_dir2);
+	CLEAR_BIT(PORTD, Motor2_dir2);
 }
 
 void Motor_stop(void)

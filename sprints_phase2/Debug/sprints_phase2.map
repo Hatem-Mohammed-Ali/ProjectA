@@ -23,6 +23,7 @@ Linker script and memory map
 LOAD c:/drive d/my files/handasa/self study/embedded systems/imt diploma/software/imt_sdk_win_64/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
 LOAD ./motor.o
 LOAD ./phase2.o
+LOAD ./pwm.o
 LOAD ./timer.o
 LOAD ./ultrasonic.o
 LOAD c:/drive d/my files/handasa/self study/embedded systems/imt diploma/software/imt_sdk_win_64/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
@@ -119,7 +120,7 @@ LOAD c:/drive d/my files/handasa/self study/embedded systems/imt diploma/softwar
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000      0x53a
+.text           0x00000000      0x696
  *(.vectors)
  .vectors       0x00000000       0x54 c:/drive d/my files/handasa/self study/embedded systems/imt diploma/software/imt_sdk_win_64/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
                 0x00000000                __vectors
@@ -194,6 +195,7 @@ LOAD c:/drive d/my files/handasa/self study/embedded systems/imt diploma/softwar
                 0x00000078                __vector_20
  .text          0x0000007c        0x0 ./motor.o
  .text          0x0000007c        0x0 ./phase2.o
+ .text          0x0000007c        0x0 ./pwm.o
  .text          0x0000007c        0x0 ./timer.o
  .text          0x0000007c        0x0 ./ultrasonic.o
  .text          0x0000007c        0x0 c:/drive d/my files/handasa/self study/embedded systems/imt diploma/software/imt_sdk_win_64/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodhi4.o)
@@ -225,35 +227,38 @@ LOAD c:/drive d/my files/handasa/self study/embedded systems/imt diploma/softwar
  .text.Motor_stop
                 0x000002d6       0x46 ./motor.o
                 0x000002d6                Motor_stop
- .text.main     0x0000031c       0x2a ./phase2.o
+ .text.main     0x0000031c       0xf4 ./phase2.o
                 0x0000031c                main
+ .text.timer1_pwm_init
+                0x00000410       0x90 ./pwm.o
+                0x00000410                timer1_pwm_init
  .text.__vector_11
-                0x00000346       0x74 ./timer.o
-                0x00000346                __vector_11
+                0x000004a0       0x7c ./timer.o
+                0x000004a0                __vector_11
  .text.timer0_init
-                0x000003ba       0x40 ./timer.o
-                0x000003ba                timer0_init
+                0x0000051c       0x3e ./timer.o
+                0x0000051c                timer0_init
  .text.Ultrasonic_init
-                0x000003fa       0x1c ./ultrasonic.o
-                0x000003fa                Ultrasonic_init
+                0x0000055a       0x1c ./ultrasonic.o
+                0x0000055a                Ultrasonic_init
  .text.Ultrasonic_start
-                0x00000416       0x24 ./ultrasonic.o
-                0x00000416                Ultrasonic_start
+                0x00000576       0x24 ./ultrasonic.o
+                0x00000576                Ultrasonic_start
  .text.Ultrasonic_en_interrupt
-                0x0000043a       0x54 ./ultrasonic.o
-                0x0000043a                Ultrasonic_en_interrupt
+                0x0000059a       0x54 ./ultrasonic.o
+                0x0000059a                Ultrasonic_en_interrupt
  .text.__vector_3
-                0x0000048e       0x80 ./ultrasonic.o
-                0x0000048e                __vector_3
- .text.libgcc   0x0000050e       0x28 c:/drive d/my files/handasa/self study/embedded systems/imt diploma/software/imt_sdk_win_64/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodhi4.o)
-                0x0000050e                __udivmodhi4
- .text.libgcc   0x00000536        0x0 c:/drive d/my files/handasa/self study/embedded systems/imt diploma/software/imt_sdk_win_64/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
- .text.libgcc   0x00000536        0x0 c:/drive d/my files/handasa/self study/embedded systems/imt diploma/software/imt_sdk_win_64/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_clear_bss.o)
-                0x00000536                . = ALIGN (0x2)
+                0x000005ee       0x7c ./ultrasonic.o
+                0x000005ee                __vector_3
+ .text.libgcc   0x0000066a       0x28 c:/drive d/my files/handasa/self study/embedded systems/imt diploma/software/imt_sdk_win_64/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodhi4.o)
+                0x0000066a                __udivmodhi4
+ .text.libgcc   0x00000692        0x0 c:/drive d/my files/handasa/self study/embedded systems/imt diploma/software/imt_sdk_win_64/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+ .text.libgcc   0x00000692        0x0 c:/drive d/my files/handasa/self study/embedded systems/imt diploma/software/imt_sdk_win_64/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_clear_bss.o)
+                0x00000692                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x00000536        0x0 c:/drive d/my files/handasa/self study/embedded systems/imt diploma/software/imt_sdk_win_64/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
-                0x00000536                exit
-                0x00000536                _exit
+ .fini9         0x00000692        0x0 c:/drive d/my files/handasa/self study/embedded systems/imt diploma/software/imt_sdk_win_64/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+                0x00000692                exit
+                0x00000692                _exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -272,16 +277,17 @@ LOAD c:/drive d/my files/handasa/self study/embedded systems/imt diploma/softwar
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x00000536        0x4 c:/drive d/my files/handasa/self study/embedded systems/imt diploma/software/imt_sdk_win_64/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+ .fini0         0x00000692        0x4 c:/drive d/my files/handasa/self study/embedded systems/imt diploma/software/imt_sdk_win_64/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
  *(.fini0)
-                0x0000053a                _etext = .
+                0x00000696                _etext = .
 
-.data           0x00800060        0x0 load address 0x0000053a
+.data           0x00800060        0x0 load address 0x00000696
                 0x00800060                PROVIDE (__data_start, .)
  *(.data)
  .data          0x00800060        0x0 c:/drive d/my files/handasa/self study/embedded systems/imt diploma/software/imt_sdk_win_64/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
  .data          0x00800060        0x0 ./motor.o
  .data          0x00800060        0x0 ./phase2.o
+ .data          0x00800060        0x0 ./pwm.o
  .data          0x00800060        0x0 ./timer.o
  .data          0x00800060        0x0 ./ultrasonic.o
  .data          0x00800060        0x0 c:/drive d/my files/handasa/self study/embedded systems/imt diploma/software/imt_sdk_win_64/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodhi4.o)
@@ -295,12 +301,13 @@ LOAD c:/drive d/my files/handasa/self study/embedded systems/imt diploma/softwar
                 0x00800060                _edata = .
                 0x00800060                PROVIDE (__data_end, .)
 
-.bss            0x00800060        0x5
+.bss            0x00800060        0x7
                 0x00800060                PROVIDE (__bss_start, .)
  *(.bss)
  .bss           0x00800060        0x0 c:/drive d/my files/handasa/self study/embedded systems/imt diploma/software/imt_sdk_win_64/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
  .bss           0x00800060        0x0 ./motor.o
  .bss           0x00800060        0x0 ./phase2.o
+ .bss           0x00800060        0x0 ./pwm.o
  .bss           0x00800060        0x0 ./timer.o
  .bss           0x00800060        0x0 ./ultrasonic.o
  .bss           0x00800060        0x0 c:/drive d/my files/handasa/self study/embedded systems/imt diploma/software/imt_sdk_win_64/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodhi4.o)
@@ -310,21 +317,21 @@ LOAD c:/drive d/my files/handasa/self study/embedded systems/imt diploma/softwar
  .bss.pulse_flag
                 0x00800060        0x1 ./timer.o
                 0x00800060                pulse_flag
- .bss.g_tick    0x00800061        0x2 ./timer.o
+ .bss.g_tick    0x00800061        0x4 ./timer.o
                 0x00800061                g_tick
- .bss.Distance  0x00800063        0x2 ./ultrasonic.o
-                0x00800063                Distance
+ .bss.Distance  0x00800065        0x2 ./ultrasonic.o
+                0x00800065                Distance
  *(COMMON)
-                0x00800065                PROVIDE (__bss_end, .)
-                0x0000053a                __data_load_start = LOADADDR (.data)
-                0x0000053a                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x00800067                PROVIDE (__bss_end, .)
+                0x00000696                __data_load_start = LOADADDR (.data)
+                0x00000696                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x00800065        0x0
-                0x00800065                PROVIDE (__noinit_start, .)
+.noinit         0x00800067        0x0
+                0x00800067                PROVIDE (__noinit_start, .)
  *(.noinit*)
-                0x00800065                PROVIDE (__noinit_end, .)
-                0x00800065                _end = .
-                0x00800065                PROVIDE (__heap_start, .)
+                0x00800067                PROVIDE (__noinit_end, .)
+                0x00800067                _end = .
+                0x00800067                PROVIDE (__heap_start, .)
 
 .eeprom         0x00810000        0x0
  *(.eeprom*)
@@ -342,19 +349,21 @@ LOAD c:/drive d/my files/handasa/self study/embedded systems/imt diploma/softwar
 .signature
  *(.signature*)
 
-.stab           0x00000000      0x99c
+.stab           0x00000000      0xc78
  *(.stab)
  .stab          0x00000000      0x498 ./motor.o
- .stab          0x00000498      0x138 ./phase2.o
-                                0x1d4 (size before relaxing)
- .stab          0x000005d0      0x1bc ./timer.o
+ .stab          0x00000498      0x258 ./phase2.o
+                                0x2f4 (size before relaxing)
+ .stab          0x000006f0      0x1b0 ./pwm.o
+                                0x24c (size before relaxing)
+ .stab          0x000008a0      0x1bc ./timer.o
                                 0x258 (size before relaxing)
- .stab          0x0000078c      0x210 ./ultrasonic.o
-                                0x2b8 (size before relaxing)
+ .stab          0x00000a5c      0x21c ./ultrasonic.o
+                                0x2c4 (size before relaxing)
 
-.stabstr        0x00000000      0x506
+.stabstr        0x00000000      0x56a
  *(.stabstr)
- .stabstr       0x00000000      0x506 ./motor.o
+ .stabstr       0x00000000      0x56a ./motor.o
 
 .stab.excl
  *(.stab.excl)

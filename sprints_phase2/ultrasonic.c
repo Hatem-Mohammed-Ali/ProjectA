@@ -38,7 +38,8 @@ void Ultrasonic_en_interrupt(void)
 
 ISR(INT2_vect)
 {
-	Distance = ((g_tick * 10) - 200) / 58;
+	Distance = ((g_tick * 16) - 200) /100 ;
 	g_tick = 0;
+	pulse_flag = 0;
 }
 

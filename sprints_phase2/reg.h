@@ -8,7 +8,9 @@
 #ifndef __DIO_REG_H__
 #define __DIO_REG_H__
 
-//PORT PINS
+
+
+// PORT PINS
 #define PIN0 0
 #define PIN1 1
 #define PIN2 2
@@ -19,9 +21,17 @@
 #define PIN7 7
 
 //TIMER0 PINS
+#define CS00 0
 #define CS01 1
 #define FOC0 7
 #define TOIE0 0
+
+//TIMER1 PINS
+#define WGM10  0
+#define WGM12  3
+#define COM1A1 7
+#define COM1B1 5
+#define CS11   1
 
 //PORT A
 #define PORTA *((volatile uint8_t *)0x3B)
@@ -44,13 +54,22 @@
 #define PIND  *((volatile uint8_t *)0x30)
 
 //TIMER
-#define TCCR2 	  *((volatile uint8_t *)0x45)
-#define TCNT2     *((volatile uint8_t *)0x44)
-#define OCR2      *((volatile uint8_t *)0x43)
-#define TIMSK     *((volatile uint8_t *)0x59)
-#define TCCR0	  *((volatile uint8_t *)0x53)
-#define TCNT0     *((volatile uint8_t *)0x52)
-#define OCR0      *((volatile uint8_t *)0x5C)
+#define TCCR2 *((volatile uint8_t *)0x45)
+#define TCNT2 *((volatile uint8_t *)0x44)
+#define OCR2  *((volatile uint8_t *)0x43)
+#define TIMSK (*(volatile uint8_t *)(0x59))
+#define TCCR0 (*(volatile uint8_t *)(0x53))
+#define TCNT0 (*(volatile uint8_t *)(0x52))
+#define OCR0  *((volatile uint8_t *)0x5C)
+#define TCNT1L  *((volatile uint8_t *)0x4C)
+#define TCNT1H  *((volatile uint8_t *)0x4D)
+#define OCR1AL  *((volatile uint8_t *)0x4A)
+#define OCR1AH  *((volatile uint8_t *)0x4B)
+#define OCR1BL  *((volatile uint8_t *)0x48)
+#define OCR1BH  *((volatile uint8_t *)0x49)
+#define TCCR1A  *((volatile uint8_t *)0x4F)
+#define TCCR1B  *((volatile uint8_t *)0x4E)
+
 
 //INTERRUPTS
 #define SREG      *((volatile uint8_t *)0x5F)

@@ -1,12 +1,12 @@
-timer.o timer.o: ../timer.c ../timer.h ../std_types.h ../bit_math.h \
-  ../reg.h ../interrupt.h
+timer.o timer.o: ../timer.c ../timer.h ../bit_math.h ../reg.h \
+  ../interrupt.h ../std_types.h
 
 ../timer.h:
-
-../std_types.h:
 
 ../bit_math.h:
 
 ../reg.h:
 
 ../interrupt.h:
+
+../std_types.h:
