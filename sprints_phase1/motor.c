@@ -1,6 +1,6 @@
 #include "motor.h"
 
-void Motor_init()
+void Motor_init(void)
 {
 	SET_BIT(DDRD, Motor1_dir1);
 	SET_BIT(DDRD, Motor1_dir2);
@@ -16,7 +16,7 @@ void Motor_init()
 	SET_BIT(PORTD, Motor2_EN);
 }
 
-void Motor_move_forward()
+void Motor_move_forward(void)
 {
 	CLEAR_BIT(PORTD, Motor1_dir1);
 	SET_BIT(PORTD, Motor1_dir2);
@@ -24,7 +24,7 @@ void Motor_move_forward()
 	CLEAR_BIT(PORTD, Motor2_dir2);
 }
 
-void Motor_move_backward()
+void Motor_move_backward(void)
 {
 	SET_BIT(PORTD, Motor1_dir1);
 	CLEAR_BIT(PORTD, Motor1_dir2);
@@ -32,7 +32,15 @@ void Motor_move_backward()
 	SET_BIT(PORTD, Motor2_dir2);
 }
 
-void Motor_turn_right()
+void Motor_turn_right(void)
+{
+	SET_BIT(PORTD, Motor1_dir1);
+	CLEAR_BIT(PORTD, Motor1_dir2);
+	SET_BIT(PORTD, Motor2_dir1);
+	CLEAR_BIT(PORTD, Motor2_dir2);
+}
+
+void Motor_turn_left(void)
 {
 	CLEAR_BIT(PORTD, Motor1_dir1);
 	SET_BIT(PORTD, Motor1_dir2);
@@ -40,31 +48,24 @@ void Motor_turn_right()
 	SET_BIT(PORTD, Motor2_dir2);
 }
 
-void Motor_turn_left()
+void Motor_slide_right(void)
 {
-	SET_BIT(PORTD, Motor1_dir1);
+	CLEAR_BIT(PORTD, Motor1_dir1);
 	CLEAR_BIT(PORTD, Motor1_dir2);
 	CLEAR_BIT(PORTD, Motor2_dir1);
 	SET_BIT(PORTD, Motor2_dir2);
 }
 
-void Motor_slide_right()
+void Motor_slide_left(void)
 {
+
 	CLEAR_BIT(PORTD, Motor1_dir1);
 	SET_BIT(PORTD, Motor1_dir2);
 	CLEAR_BIT(PORTD, Motor2_dir1);
 	CLEAR_BIT(PORTD, Motor2_dir2);
 }
 
-void Motor_slide_left()
-{
-	CLEAR_BIT(PORTD, Motor1_dir1);
-	CLEAR_BIT(PORTD, Motor1_dir2);
-	CLEAR_BIT(PORTD, Motor2_dir1);
-	SET_BIT(PORTD, Motor2_dir2);
-}
-
-void Motor_stop()
+void Motor_stop(void)
 {
 	CLEAR_BIT(PORTD, Motor1_dir1);
 	CLEAR_BIT(PORTD, Motor1_dir2);

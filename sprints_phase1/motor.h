@@ -22,13 +22,13 @@
 
 
 
-extern void Motor_init();
-extern void Motor_move_forward();
-void Motor_move_backward();
-void Motor_turn_right();
-void Motor_turn_left();
-void Motor_slide_right();
-void Motor_slide_left();
-void Motor_stop();
+extern void Motor_init(void);
+extern void Motor_move_forward(void);
+void Motor_move_backward(void);
+void Motor_turn_right(void);
+void Motor_turn_left(void);
+void Motor_slide_right(void);
+void Motor_slide_left(void);
+void Motor_stop(void);
 
 #endif /* __BIT_MATH_H__ */

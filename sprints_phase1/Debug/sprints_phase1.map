@@ -17,8 +17,8 @@ signature        0x00840000         0x00000400         rw !x
 Linker script and memory map
 
 LOAD c:/drive d/my files/handasa/self study/embedded systems/imt diploma/software/imt_sdk_win_64/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
-LOAD ./main.o
-LOAD ./motor_prg.o
+LOAD ./motor.o
+LOAD ./phase1.o
 LOAD c:/drive d/my files/handasa/self study/embedded systems/imt diploma/software/imt_sdk_win_64/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
 LOAD c:/drive d/my files/handasa/self study/embedded systems/imt diploma/software/imt_sdk_win_64/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a
 LOAD c:/drive d/my files/handasa/self study/embedded systems/imt diploma/software/imt_sdk_win_64/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
@@ -186,37 +186,37 @@ LOAD c:/drive d/my files/handasa/self study/embedded systems/imt diploma/softwar
                 0x00000068                __vector_16
                 0x00000068                __vector_18
                 0x00000068                __vector_20
- .text          0x0000006c        0x0 ./main.o
- .text          0x0000006c        0x0 ./motor_prg.o
+ .text          0x0000006c        0x0 ./motor.o
+ .text          0x0000006c        0x0 ./phase1.o
  .text          0x0000006c        0x0 c:/drive d/my files/handasa/self study/embedded systems/imt diploma/software/imt_sdk_win_64/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
                 0x0000006c                . = ALIGN (0x2)
  *(.text.*)
- .text.main     0x0000006c       0x12 ./main.o
-                0x0000006c                main
  .text.Motor_init
-                0x0000007e       0xb6 ./motor_prg.o
-                0x0000007e                Motor_init
+                0x0000006c       0xb6 ./motor.o
+                0x0000006c                Motor_init
  .text.Motor_move_forward
-                0x00000134       0x46 ./motor_prg.o
-                0x00000134                Motor_move_forward
+                0x00000122       0x46 ./motor.o
+                0x00000122                Motor_move_forward
  .text.Motor_move_backward
-                0x0000017a       0x46 ./motor_prg.o
-                0x0000017a                Motor_move_backward
+                0x00000168       0x46 ./motor.o
+                0x00000168                Motor_move_backward
  .text.Motor_turn_right
-                0x000001c0       0x46 ./motor_prg.o
-                0x000001c0                Motor_turn_right
+                0x000001ae       0x46 ./motor.o
+                0x000001ae                Motor_turn_right
  .text.Motor_turn_left
-                0x00000206       0x46 ./motor_prg.o
-                0x00000206                Motor_turn_left
+                0x000001f4       0x46 ./motor.o
+                0x000001f4                Motor_turn_left
  .text.Motor_slide_right
-                0x0000024c       0x46 ./motor_prg.o
-                0x0000024c                Motor_slide_right
+                0x0000023a       0x46 ./motor.o
+                0x0000023a                Motor_slide_right
  .text.Motor_slide_left
-                0x00000292       0x46 ./motor_prg.o
-                0x00000292                Motor_slide_left
+                0x00000280       0x46 ./motor.o
+                0x00000280                Motor_slide_left
  .text.Motor_stop
-                0x000002d8       0x46 ./motor_prg.o
-                0x000002d8                Motor_stop
+                0x000002c6       0x46 ./motor.o
+                0x000002c6                Motor_stop
+ .text.main     0x0000030c       0x12 ./phase1.o
+                0x0000030c                main
  .text.libgcc   0x0000031e        0x0 c:/drive d/my files/handasa/self study/embedded systems/imt diploma/software/imt_sdk_win_64/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
                 0x0000031e                . = ALIGN (0x2)
  *(.fini9)
@@ -249,8 +249,8 @@ LOAD c:/drive d/my files/handasa/self study/embedded systems/imt diploma/softwar
                 0x00800060                PROVIDE (__data_start, .)
  *(.data)
  .data          0x00800060        0x0 c:/drive d/my files/handasa/self study/embedded systems/imt diploma/software/imt_sdk_win_64/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
- .data          0x00800060        0x0 ./main.o
- .data          0x00800060        0x0 ./motor_prg.o
+ .data          0x00800060        0x0 ./motor.o
+ .data          0x00800060        0x0 ./phase1.o
  .data          0x00800060        0x0 c:/drive d/my files/handasa/self study/embedded systems/imt diploma/software/imt_sdk_win_64/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
  *(.data*)
  *(.rodata)
@@ -264,8 +264,8 @@ LOAD c:/drive d/my files/handasa/self study/embedded systems/imt diploma/softwar
                 0x00800060                PROVIDE (__bss_start, .)
  *(.bss)
  .bss           0x00800060        0x0 c:/drive d/my files/handasa/self study/embedded systems/imt diploma/software/imt_sdk_win_64/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
- .bss           0x00800060        0x0 ./main.o
- .bss           0x00800060        0x0 ./motor_prg.o
+ .bss           0x00800060        0x0 ./motor.o
+ .bss           0x00800060        0x0 ./phase1.o
  .bss           0x00800060        0x0 c:/drive d/my files/handasa/self study/embedded systems/imt diploma/software/imt_sdk_win_64/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
  *(.bss*)
  *(COMMON)
@@ -296,15 +296,15 @@ LOAD c:/drive d/my files/handasa/self study/embedded systems/imt diploma/softwar
 .signature
  *(.signature*)
 
-.stab           0x00000000      0x738
+.stab           0x00000000      0x5ac
  *(.stab)
- .stab          0x00000000      0x348 ./main.o
- .stab          0x00000348      0x3f0 ./motor_prg.o
-                                0x48c (size before relaxing)
+ .stab          0x00000000      0x48c ./motor.o
+ .stab          0x0000048c      0x120 ./phase1.o
+                                0x1bc (size before relaxing)
 
-.stabstr        0x00000000      0x87e
+.stabstr        0x00000000      0x3fd
  *(.stabstr)
- .stabstr       0x00000000      0x87e ./main.o
+ .stabstr       0x00000000      0x3fd ./motor.o
 
 .stab.excl
  *(.stab.excl)

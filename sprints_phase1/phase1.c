@@ -4,7 +4,6 @@
  *  Created on: Feb 1, 2020
  *      Author: Hatem
  */
-#include <util/delay.h>
 #include "motor.h"
 
 int main()
